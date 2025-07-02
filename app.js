@@ -28,36 +28,84 @@ class myArray {
     console.log(deletedItem);
   }
   unshift(e) {
-    for (let i = this.length - 1; i <= 0; i--) {
+    for (let i = this.length - 1; i >= 0; i--) {
       this.data[i + 1] = this.data[i];
     }
     this.data[0] = e;
-    // this.data.length--
+     this.length++
   }
 
   deleteByIndex(index) {
+    let deletedItem=""
     if (index == this.length - 1) {
       delete this.data[this.length - 1];
       this.length--;
       this.data.length = this.length;
     } else {
-      const deletedItem = this.data[index];
+       deletedItem = this.data[index];
       delete this.data[index];
       for (let i = index; i < this.length; i++) {
-        this.data[index] = this.data[index + 1];
+        this.data[i] = this.data[i + 1];
       }
       this.length--;
       this.data.length=this.length
-      return deletedItem
+      
     }
-    
+    return deletedItem
   }
 }
 
 const newMyArray = new myArray();
 
 newMyArray.push("umer");
+newMyArray.push("azhar")
+newMyArray.unshift("azhar")
+newMyArray.pop()
+newMyArray.shift()
+newMyArray.unshift("azhar")
+newMyArray.unshift("hasan")
+newMyArray.unshift("fatima")
+newMyArray.unshift("ali")
 
-console.log(newMyArray);
+
+console.log(newMyArray.deleteByIndex(1));
+
+
+
+//Reverse String
+
+let str = "My name is Muhammad Umer"
+
+let reversestr = str.split(" ").reverse("").join(" ")
+let arr= []
+console.log(reversestr)
+
+// Reversing whole word in the sentence
+
+str.split(" ").forEach((e)=>{
+ arr.push( e.split("").reverse("").join(""))
+})
+
+
+console.log(arr.join(" "))
+
+
+//Palindrome
+
+let word = "civic";
+
+let reverseWord = word.split("").reverse("").join("")
+
+if(reverseWord === word){
+  console.log("Its Palindrom")
+}else{
+  console.log("Its not a Palindrom")
+}
+
+let number = 123456
+
+console.log(number.toString().split("").reverse("").join(""))
+
+
 
 
